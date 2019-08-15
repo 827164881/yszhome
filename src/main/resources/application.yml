@@ -1,0 +1,68 @@
+#======================================#
+#========== Spring settings ===========#
+#======================================#
+
+spring:
+  # 应用程序名称
+  application:
+    name: yszhome
+
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    ssl: false
+    timeout: 2000
+    jedis:
+      pool:
+        max-active: 800
+        max-idle: 800
+        min-idle: 20
+
+
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/qcjr?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=UTC
+    initial-size: 5
+    min-idle: 5
+    max-active: 20
+    max-wait: 60000
+
+  thymeleaf:
+    prefix: classpath:templates/
+    servlet:
+      content-type: text/html
+    suffix: .html
+    encoding: UTF-8
+
+mybatis:
+  mapper-locations: classpath:mappings/*Mapper.xml
+  type-aliases-package: com.microdreams.modules.entity
+
+
+#showSql
+logging:
+  config: classpath:logback-spring.xml
+  level:
+    com:
+      microdreams:
+        modules:
+          mapper: debug
+#======================================#
+#========== Server settings ===========#
+#======================================#
+
+
+server:
+  port: 8080
+  servlet:
+    context-path: /yszhome
+  tomcat:
+    uri-encoding: UTF-8
+
+#======================================#
+#========== Project sttings ==========#
+#======================================#
+redis_key_prefix: mdcms.qcjr.       #redis保存的key前缀
